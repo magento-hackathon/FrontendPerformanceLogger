@@ -1,0 +1,4 @@
+app/etc/modules/*                                         app/etc/modules
+app/code/community/Zoostores/FrontendPerformanceLogger    app/code/community/Zoostores/FrontendPerformanceLogger
+app/design/frontend/base/default/layout/*                 app/design/frontend/base/default/layout/
+app/design/frontend/base/default/template/*               app/design/frontend/base/default/template/

@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS {$this->getTable('frontendperformance_log')} (
   `receive_time` smallint NOT NULL default '0',
   `load_event_time` smallint NOT NULL default '0',
   `dom_content_time` smallint NOT NULL default '0',
-  `dom_complete_time` smallint NOT NULL default '0'
+  `dom_complete_time` smallint NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `time` (`time`),
   KEY `route` (`route`),
