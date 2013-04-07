@@ -12,20 +12,40 @@ var FPL = (typeof (FPL) == "undefined" || !FPL ) ? {} : FPL;
 FPL.logPage = function(){
     if (window.performance && window.performance.timing) {
         var t = window.performance.timing;
-        o = [];
+        var o = [];
+        <?php 
+        // TODO: Test user value sanitization. 
+        //       Record "frontend" cookie value 
+        ?>
         o.redirectTime       = t.redirectEnd - t.redirectStart;
         o.connectTime        = t.connectEnd - t.connectStart;
         o.waitTime           = t.responseStart - t.requestStart;
         o.receiveTime        = t.responseEnd - t.responseStart;
         o.loadEventTime      = t.loadEventStart - t.fetchStart; // blue line in chrome dev tools
         o.domContentTime     = t.domContentLoadedEventStart - t.fetchStart; // red line in chrome dev tools
-        //o.domInteractiveTime = t.domInteractive - t.domLoading;
+        //o.domInteractiveTime = t.domInteractive - t.domLoading; // unused for now
         o.domCompleteTime    = t.domComplete - t.domLoading;
         o.route              = '<?php echo $this->getRoute();?>';
         o.url                = '<?php echo $this->helper('core/url')->getCurrentUrl();?>';
-<? if ($this->isDebug()) : ?>
-        console.log(o);
-<?php endif; ?>
+        <? if ($this->isDebug()) : ?>
+            console.log(o);
+        <?php endif; ?>
+
+        new Ajax.Request('<?php echo Mage::getUrl('frontendperformancelogger/index/save');?>', {
+            method:'post',
+            parameters: o,
+            onSuccess: function(transport) {
+            <? if ($this->isDebug()) : ?>
+                var response = transport.responseText || "no response text";
+                alert("Success! \n\n" + response);
+            <?php endif; ?>
+            },
+            onFailure: function() { 
+            <? if ($this->isDebug()) : ?>
+                alert('Failure. Something went wrong...'); 
+            <?php endif; ?>
+            }
+         });
     }
 }
 Event.observe(window, 'load', FPL.logPage, false);

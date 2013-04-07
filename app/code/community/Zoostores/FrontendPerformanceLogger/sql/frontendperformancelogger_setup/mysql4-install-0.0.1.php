@@ -11,8 +11,8 @@ $installer = $this;
 $installer->startSetup();
 
 $installer->run("
--- DROP TABLE IF EXISTS {$this->getTable('frontendperformance_log')};
-CREATE TABLE IF NOT EXISTS {$this->getTable('frontendperformance_log')} (
+-- DROP TABLE IF EXISTS {$this->getTable('log_frontendperformance')};
+CREATE TABLE IF NOT EXISTS {$this->getTable('log_frontendperformance')} (
   `id` int(10) unsigned NOT NULL auto_increment,
   `time` timestamp DEFAULT CURRENT_TIMESTAMP,
   `url` varchar(250) NOT NULL default '',

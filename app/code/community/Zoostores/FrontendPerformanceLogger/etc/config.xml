@@ -64,7 +64,6 @@
     </adminhtml>   
 -->
     <global>
-<!-- TODO
         <models>
             <frontendperformancelogger>
                 <class>Zoostores_FrontendPerformanceLogger_Model</class>
@@ -73,13 +72,12 @@
             <frontendperformancelogger_mysql4>
                 <class>Zoostores_FrontendPerformanceLogger_Model_Mysql4</class>
                 <entities>
-                    <log>
-                        <table>frontendperformance_log</table>
+                    <log><!-- name slightly inconsistent so it matches existing magento log tables --> 
+                        <table>log_frontendperformance</table>
                     </log>
                 </entities>
             </frontendperformancelogger_mysql4>
         </models>
--->
         <resources>
             <frontendperformancelogger_setup>
                 <setup>
@@ -122,4 +120,3 @@
         </zoostores>
     </default>
 </config>
-
