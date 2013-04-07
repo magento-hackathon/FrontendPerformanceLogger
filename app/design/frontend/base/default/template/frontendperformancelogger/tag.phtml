@@ -21,6 +21,8 @@ FPL.logPage = function(){
         o.domContentTime     = t.domContentLoadedEventStart - t.fetchStart; // red line in chrome dev tools
         //o.domInteractiveTime = t.domInteractive - t.domLoading;
         o.domCompleteTime    = t.domComplete - t.domLoading;
+        o.route              = '<?php echo $this->getRoute();?>';
+        o.url                = '<?php echo $this->helper('core/url')->getCurrentUrl();?>';
 <? if ($this->isDebug()) : ?>
         console.log(o);
 <?php endif; ?>
