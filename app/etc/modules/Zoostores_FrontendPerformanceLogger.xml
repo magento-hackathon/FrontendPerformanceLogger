@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Frontend Performance Logger
+ * 
+ * @package    Zoostores_FrontendPerformanceLogger
+ * @author     Michael Reeves <mreeves@zoostores.com>
+ */
+-->
+<config>
+    <modules>
+        <Zoostores_FrontendPerformanceLogger>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Zoostores_FrontendPerformanceLogger>
+    </modules>
+</config>

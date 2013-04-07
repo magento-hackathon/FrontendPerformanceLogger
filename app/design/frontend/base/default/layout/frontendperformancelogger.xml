@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Frontend Performance Logger
+ *
+ * @package    Zoostores_FrontendPerformanceLogger
+ * @author     Michael Reeves <mreeves@zoostores.com>
+ */
+-->
+<layout>
+    <default>
+        <reference name="before_body_end">
+            <block type="frontendperformancelogger/tag" name="frontendperformancelogger_tag" template="frontendperformancelogger/tag.phtml" after="-"/>
+        </reference>
+    </default>
+</layout>

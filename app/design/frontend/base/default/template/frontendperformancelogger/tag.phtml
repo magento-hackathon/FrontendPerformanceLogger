@@ -1,0 +1,31 @@
+<?php
+/**
+ * Frontend Performance Logger
+ *
+ * @package    Zoostores_FrontendPerformanceLogger
+ * @author     Michael Reeves <mreeves@zoostores.com>
+ */
+?>
+<? if ($this->isEnabled()) : ?>
+<script type="text/javascript">
+var FPL = (typeof (FPL) == "undefined" || !FPL ) ? {} : FPL;
+FPL.logPage = function(){
+    if (window.performance && window.performance.timing) {
+        var t = window.performance.timing;
+        o = [];
+        o.redirectTime       = t.redirectEnd - t.redirectStart;
+        o.connectTime        = t.connectEnd - t.connectStart;
+        o.waitTime           = t.responseStart - t.requestStart;
+        o.receiveTime        = t.responseEnd - t.responseStart;
+        o.loadEventTime      = t.loadEventStart - t.fetchStart; // blue line in chrome dev tools
+        o.domContentTime     = t.domContentLoadedEventStart - t.fetchStart; // red line in chrome dev tools
+        //o.domInteractiveTime = t.domInteractive - t.domLoading;
+        o.domCompleteTime    = t.domComplete - t.domLoading;
+<? if ($this->isDebug()) : ?>
+        console.log(o);
+<?php endif; ?>
+    }
+}
+Event.observe(window, 'load', FPL.logPage, false);
+</script>
+<?php endif; ?>
